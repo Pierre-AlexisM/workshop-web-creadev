@@ -1,4 +1,4 @@
-import { accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors"
+import { Accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors"
 import EventEmitter from "../events/EventEmitter"
 
 export default class DeviceAcceleration extends EventEmitter {
@@ -31,7 +31,7 @@ export default class DeviceAcceleration extends EventEmitter {
     }
 
     init() {
-        this.sensor = new accelerometer({ frequency: 60 })
+        this.sensor = new Accelerometer({ frequency: 60 })
         this.sensor.addEventListener('reading', () => {
             this.x = this.sensor.x
             this.y = this.sensor.y
