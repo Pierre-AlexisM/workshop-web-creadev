@@ -1,16 +1,16 @@
-import { Accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors"
+import { accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors"
 import EventEmitter from "../events/EventEmitter"
 
 export default class DeviceAcceleration extends EventEmitter {
     constructor() {
         super()
 
-        /** coordinates */
+        
         this.x = 0
         this.y = 0
         this.z = 0
 
-        /** permission */
+        
         if (navigator.permissions) {
             Promise.all([navigator.permissions.query({ name: "accelerometer" })])
                 .then(results => {
@@ -31,7 +31,7 @@ export default class DeviceAcceleration extends EventEmitter {
     }
 
     init() {
-        this.sensor = new Accelerometer({ frequency: 60 })
+        this.sensor = new accelerometer({ frequency: 60 })
         this.sensor.addEventListener('reading', () => {
             this.x = this.sensor.x
             this.y = this.sensor.y
